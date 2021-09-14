@@ -3,4 +3,5 @@
     <string name="title_quantity">Quantity</string>
     <string name="_0">0</string>
     <string name="action_order">Order</string>
+    <string name="title_price">Price</string>
 </resources>
