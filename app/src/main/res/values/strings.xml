@@ -2,6 +2,9 @@
     <string name="app_name">Just Java</string>
     <string name="title_quantity">Quantity</string>
     <string name="_0">0</string>
+    <string name="_2">2</string>
     <string name="action_order">Order</string>
     <string name="title_price">Price</string>
+    <string name="plus_sign">+</string>
+    <string name="minus_sign">-</string>
 </resources>
