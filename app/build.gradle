@@ -6,7 +6,7 @@ android {
     compileSdk 30
 
     defaultConfig {
-        applicationId "com.example.android.justjava"
+        applicationId "com.example.android.courtcounter"
         minSdk 16
         targetSdk 30
         versionCode 1
