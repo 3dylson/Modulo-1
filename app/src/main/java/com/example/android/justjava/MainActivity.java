@@ -2,6 +2,7 @@ package com.example.android.justjava;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,6 +14,9 @@ import java.text.NumberFormat;
  */
 public class MainActivity extends AppCompatActivity {
 
+    int quantity = 2;
+    double coffeePrice = 0.5;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,9 +27,7 @@ public class MainActivity extends AppCompatActivity {
      * This method is called when the order button is clicked.
      */
     public void submitOrder(View view) {
-        int quantity = 1;
-        display(quantity);
-        displayPrice(quantity * 5);
+        displayPrice(quantity * coffeePrice);
     }
 
     /**
@@ -39,18 +41,33 @@ public class MainActivity extends AppCompatActivity {
     /**
      * This method displays the given price on the screen.
      */
-    private void displayPrice(int number) {
+    private void displayPrice(double number) {
         TextView priceTextView = (TextView) findViewById(R.id.price_text_view);
         priceTextView.setText(NumberFormat.getCurrencyInstance().format(number));
     }
 
+    /**
+     * This method is called when the plus button is clicked.
+     */
     public void increment(View view) {
-        int quantity = 3;
+        if (quantity == 0) {
+            Button decrementButton = (Button) findViewById(R.id.decrement_button);
+            decrementButton.setEnabled(true);
+        }
+        quantity++;
         display(quantity);
     }
 
+
+    /**
+     * This method is called when the minus button is clicked.
+     */
     public void decrement(View view) {
-        int quantity = 3;
+        quantity--;
+        if (quantity == 0) {
+            Button decrementButton = (Button) findViewById(R.id.decrement_button);
+            decrementButton.setEnabled(false);
+        }
         display(quantity);
     }
 
