@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 /**
@@ -28,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
      * Increase the score for Team A by 1 point.
      */
     public void addOneForTeamA(View v) {
-        scoreTeamA = scoreTeamA + 1;
+        scoreTeamA++;
         displayForTeamA(scoreTeamA);
     }
 
@@ -52,10 +53,26 @@ public class MainActivity extends AppCompatActivity {
      * Resets the score for both teams back to 0.
      */
     public void resetScore(View v) {
-        scoreTeamA = 0;
-        scoreTeamB = 0;
-        displayForTeamA(scoreTeamA);
-        displayForTeamB(scoreTeamB);
+        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+        builder.setTitle("🏀");
+        builder.setMessage("Reset Score?");
+        builder.setPositiveButton(
+                "Yes",
+                (dialog, which) -> {
+                    scoreTeamA = 0;
+                    scoreTeamB = 0;
+                    displayForTeamA(scoreTeamA);
+                    displayForTeamB(scoreTeamB);
+                });
+        builder.setNegativeButton(
+                "No",
+                (dialog,which) -> {
+                    dialog.cancel();
+                });
+
+        AlertDialog dialogReset = builder.create();
+        dialogReset.show();
+
     }
 
     /**
@@ -70,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
      * Increase the score for Team B by 1 point.
      */
     public void addOneForTeamB(View v) {
-        scoreTeamB = scoreTeamB + 1;
+        scoreTeamB++;
         displayForTeamB(scoreTeamB);
     }
 
