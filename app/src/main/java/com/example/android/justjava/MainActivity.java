@@ -23,8 +23,7 @@ import java.util.Objects;
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
-    int quantity = 2;
-    double coffeePrice = 0.5;
+    private int quantity = 2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,8 +44,11 @@ public class MainActivity extends AppCompatActivity {
         }
 
         if (quantity == 0) {
-            displayMessage(getString(R.string.error_order_invalid));
+            displayErrorMessage(getString(R.string.error_order_invalid));
             return;
+        } else {
+            TextView orderSummaryTextView = findViewById(R.id.order_summary_text_view);
+            orderSummaryTextView.setVisibility(View.GONE);
         }
 
         String name = Objects.requireNonNull(nameField.getText()).toString();
@@ -82,11 +84,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * This method displays the given text on the screen.
+     * This method displays error text on the screen.
      */
-    private void displayMessage(String message) {
+    private void displayErrorMessage(String message) {
         TextView orderSummaryTextView = findViewById(R.id.order_summary_text_view);
         orderSummaryTextView.setText(message);
+        orderSummaryTextView.setTextColor(getResources().getColor(R.color.error));
+        orderSummaryTextView.setVisibility(View.VISIBLE);
     }
 
     /**
@@ -123,7 +127,7 @@ public class MainActivity extends AppCompatActivity {
      * @return the price
      */
     private double calculatePrice(boolean hasChocolate, boolean hasWhippedCream) {
-        double total = coffeePrice;
+        double total = 0.5;
 
         if (hasWhippedCream) {
             total+= 0.20;
