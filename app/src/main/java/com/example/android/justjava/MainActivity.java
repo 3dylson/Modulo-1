@@ -1,6 +1,7 @@
 package com.example.android.justjava;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -9,7 +10,10 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.textfield.TextInputEditText;
+
 import java.text.NumberFormat;
+import java.util.Objects;
 
 /**
  * This app displays an order form to order coffee.
@@ -30,6 +34,16 @@ public class MainActivity extends AppCompatActivity {
      * This method is called when the order button is clicked.
      */
     public void submitOrder(View view) {
+        TextInputEditText nameField = findViewById(R.id.name_text_input);
+        if (TextUtils.isEmpty(nameField.getText().toString())) {
+            nameField.setError("Required");
+            return;
+        } else {
+            nameField.setError(null);
+        }
+
+        String name = Objects.requireNonNull(nameField.getText()).toString();
+
         CheckBox whippedCreamCheckBox = findViewById(R.id.toppings_checkbox);
         boolean hasWhippedCream = whippedCreamCheckBox.isChecked();
 
@@ -38,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
 
         double totalPrice = calculatePrice();
         Log.i(TAG, "The price is " + totalPrice);
-        String priceMessage = createOrderSummary(totalPrice, hasWhippedCream, hasChocolate);
+        String priceMessage = createOrderSummary(totalPrice, hasWhippedCream, hasChocolate, name);
         displayMessage(priceMessage);
     }
 
@@ -96,8 +110,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    private String createOrderSummary(double totalPrice, boolean hasChocolate, boolean hasWhippedCream) {
-        String priceMessage = "Name: Kaptain Kunal";
+    private String createOrderSummary(double totalPrice, boolean hasChocolate, boolean hasWhippedCream, String name) {
+        String priceMessage = "Name: " + name;
         priceMessage += "\n" + getString(R.string.order_summary_whipped_cream, hasWhippedCream);
         priceMessage += "\n" + getString(R.string.order_summary_chocolate, hasChocolate);
         priceMessage += "\n" + getString(R.string.order_summary_quantity, quantity);

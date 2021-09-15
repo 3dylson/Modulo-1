@@ -19,4 +19,5 @@
     <string name="order_summary_price">Total: <xliff:g id="totalPrice" example="$10">%s</xliff:g></string>
     <string name="msg_thank_you">Thank you!</string>
     <string name="title_chocolate">Chocolate</string>
+    <string name="hint_name">Name</string>
 </resources>
