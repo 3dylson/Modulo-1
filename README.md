@@ -1,4 +1,4 @@
-# Court Count
+# Court Counter
 Academia Android
 
 <img src = "/screenshots/Court_Counter_1.jpg" height = 700>
