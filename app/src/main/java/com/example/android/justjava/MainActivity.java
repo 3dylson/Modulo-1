@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
      */
     public void submitOrder(View view) {
         double totalPrice = calculatePrice();
-        String priceMessage = "Total: $" + totalPrice + "\n" + "Thank You!";
+        String priceMessage = createOrderSummary(totalPrice);
         displayMessage(priceMessage);
     }
 
@@ -91,13 +91,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    /**
-     * Creates a custom greeting message based on the name.
-     *
-     * @return text greeting
-     */
-    /*private String createCustomGreeting(String firstName, String lastName) {
-        return "Welcome, " +
-    }*/
+    private String createOrderSummary(double totalPrice) {
+        return "Name: " + "Kaptain Kunal\n" + "Quantity: " + quantity + "\n" + "Total: $" + totalPrice + "\n" + "Thank You!";
+    }
 
 }
