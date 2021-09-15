@@ -9,4 +9,6 @@
     <string name="minus_sign">-</string>
     <string name="one_dollar_sign">$1.00</string>
     <string name="title_order_summary">Order Summary</string>
+    <string name="title_toppings">Toppings</string>
+    <string name="title_whipped_cream">Whipped cream</string>
 </resources>
