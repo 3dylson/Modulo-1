@@ -1,17 +1,22 @@
 package com.example.android.justjava;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.text.NumberFormat;
 
 /**
  * This app displays an order form to order coffee.
  */
 public class MainActivity extends AppCompatActivity {
 
+    private static final String TAG = "MainActivity";
     int quantity = 2;
     double coffeePrice = 0.5;
 
@@ -25,8 +30,11 @@ public class MainActivity extends AppCompatActivity {
      * This method is called when the order button is clicked.
      */
     public void submitOrder(View view) {
+        CheckBox whippedCreamCheckBox = findViewById(R.id.toppings_checkbox);
+        boolean hasWhippedCream = whippedCreamCheckBox.isChecked();
         double totalPrice = calculatePrice();
-        String priceMessage = createOrderSummary(totalPrice);
+        Log.i(TAG, "The price is " + totalPrice);
+        String priceMessage = createOrderSummary(totalPrice, hasWhippedCream);
         displayMessage(priceMessage);
     }
 
@@ -53,6 +61,9 @@ public class MainActivity extends AppCompatActivity {
         if (quantity == 0) {
             Button decrementButton = findViewById(R.id.decrement_button);
             decrementButton.setEnabled(true);
+        }
+        else if (quantity == 100) {
+            return;
         }
         quantity++;
         displayQuantity(quantity);
@@ -81,8 +92,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    private String createOrderSummary(double totalPrice) {
-        return "Name: " + "Kaptain Kunal\n" + "Quantity: " + quantity + "\n" + "Total: $" + totalPrice + "\n" + "Thank You!";
+    private String createOrderSummary(double totalPrice, boolean hasWhippedCream) {
+        String priceMessage = "Name: Kaptain Kunal";
+        priceMessage += "\n" + getString(R.string.order_summary_whipped_cream, hasWhippedCream);
+        priceMessage += "\n" + getString(R.string.order_summary_quantity, quantity);
+        priceMessage += "\n" + getString(R.string.order_summary_price, NumberFormat.getCurrencyInstance().format(totalPrice));
+        priceMessage += "\n" + getString(R.string.msg_thank_you);
+        return priceMessage;
     }
 
 }
