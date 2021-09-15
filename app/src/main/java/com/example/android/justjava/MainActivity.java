@@ -1,5 +1,7 @@
 package com.example.android.justjava;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -42,6 +44,11 @@ public class MainActivity extends AppCompatActivity {
             nameField.setError(null);
         }
 
+        if (quantity == 0) {
+            displayMessage("⚠ Please order a valid quantity ⚠");
+            return;
+        }
+
         String name = Objects.requireNonNull(nameField.getText()).toString();
 
         CheckBox whippedCreamCheckBox = findViewById(R.id.toppings_checkbox);
@@ -52,8 +59,18 @@ public class MainActivity extends AppCompatActivity {
 
         double totalPrice = calculatePrice(hasChocolate, hasWhippedCream);
         Log.i(TAG, "The price is " + totalPrice);
-        String priceMessage = createOrderSummary(totalPrice, hasWhippedCream, hasChocolate, name);
-        displayMessage(priceMessage);
+        String order = createOrderSummary(totalPrice, hasWhippedCream, hasChocolate, name);
+        //displayMessage(priceMessage);
+
+        Intent intent = new Intent(Intent.ACTION_SENDTO);
+        intent.setData(Uri.parse("mailto:")); // only email apps should handle this
+        intent.putExtra(Intent.EXTRA_SUBJECT,
+                getString(R.string.order_summary_email_subject, name));
+        intent.putExtra(Intent.EXTRA_TEXT, order);
+
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
+        }
     }
 
     /**

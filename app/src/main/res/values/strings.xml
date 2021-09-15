@@ -11,6 +11,8 @@
     <string name="title_order_summary">Order Summary</string>
     <string name="title_toppings">Toppings</string>
     <string name="title_whipped_cream">Whipped cream</string>
+    <string name="title_chocolate">Chocolate</string>
+    <string name="hint_name">Name</string>
 
     <!--Order Summary msg-->
     <string name="order_summary_whipped_cream">Add whipped cream? <xliff:g id="hasWhippedCream" example="true">%b</xliff:g></string>
@@ -18,6 +20,5 @@
     <string name="order_summary_quantity">Quantity: <xliff:g id="quantity" example="2">%d</xliff:g></string>
     <string name="order_summary_price">Total: <xliff:g id="totalPrice" example="$10">%s</xliff:g></string>
     <string name="msg_thank_you">Thank you!</string>
-    <string name="title_chocolate">Chocolate</string>
-    <string name="hint_name">Name</string>
+    <string name="order_summary_email_subject"><xliff:g id="name" example="Edy">%s</xliff:g>\'\s Order</string>
 </resources>
