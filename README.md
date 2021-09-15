@@ -1,4 +1,4 @@
-# Just Java
+# Just Java - Order coffee
 Academia Android
 
  <img src = "/screenShots/Just_Java_1.jpg" height = 700>
