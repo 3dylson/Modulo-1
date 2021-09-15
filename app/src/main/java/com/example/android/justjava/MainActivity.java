@@ -38,14 +38,14 @@ public class MainActivity extends AppCompatActivity {
     public void submitOrder(View view) {
         TextInputEditText nameField = findViewById(R.id.name_text_input);
         if (TextUtils.isEmpty(nameField.getText().toString())) {
-            nameField.setError("Required");
+            nameField.setError(getString(R.string.error_name_empty));
             return;
         } else {
             nameField.setError(null);
         }
 
         if (quantity == 0) {
-            displayMessage("⚠ Please order a valid quantity ⚠");
+            displayMessage(getString(R.string.error_order_invalid));
             return;
         }
 
@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
         double totalPrice = calculatePrice(hasChocolate, hasWhippedCream);
         Log.i(TAG, "The price is " + totalPrice);
         String order = createOrderSummary(totalPrice, hasWhippedCream, hasChocolate, name);
-        //displayMessage(priceMessage);
+        //displayMessage(order);
 
         Intent intent = new Intent(Intent.ACTION_SENDTO);
         intent.setData(Uri.parse("mailto:")); // only email apps should handle this
@@ -138,7 +138,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     private String createOrderSummary(double totalPrice, boolean hasChocolate, boolean hasWhippedCream, String name) {
-        String priceMessage = "Name: " + name;
+        String priceMessage = getString(R.string.order_summary_name, name);
         priceMessage += "\n" + getString(R.string.order_summary_whipped_cream, hasWhippedCream);
         priceMessage += "\n" + getString(R.string.order_summary_chocolate, hasChocolate);
         priceMessage += "\n" + getString(R.string.order_summary_quantity, quantity);

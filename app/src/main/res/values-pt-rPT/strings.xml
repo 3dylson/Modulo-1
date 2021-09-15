@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name">Apenas Java</string>
+    <string name="title_quantity">Quantidade</string>
+    <string name="action_order">Pedido</string>
+    <string name="title_price">Preço</string>
+    <string name="title_order_summary">Resumo do Pedido</string>
+    <string name="title_toppings">Coberturas</string>
+    <string name="title_whipped_cream">Chantilly</string>
+    <string name="title_chocolate">Chocolate</string>
+    <string name="hint_name">Nome</string>
+    <string name="error_name_empty">Campo obrigatório</string>
+    <string name="error_order_invalid">⚠ Peça uma quantidade válida ⚠</string>
+    <string name="order_summary_name">Nome: <xliff:g id="name" example="Edy">%s</xliff:g></string>
+    <string name="order_summary_whipped_cream">Adicionar chantilly?  <xliff:g id="hasWhippedCream" example="true">%b</xliff:g></string>
+    <string name="order_summary_chocolate">Adicionar chocolate? <xliff:g id="hasChocolate" example="true">%b</xliff:g></string>
+    <string name="order_summary_quantity">Quantidade: <xliff:g id="quantity" example="2">%d</xliff:g></string>
+    <string name="order_summary_price">Total: <xliff:g id="totalPrice" example="$10">%s</xliff:g></string>
+    <string name="msg_thank_you">Obrigado!</string>
+    <string name="order_summary_email_subject">Pedido de: <xliff:g id="name" example="Edy">%s</xliff:g></string>
+</resources>
