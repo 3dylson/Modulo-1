@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
         CheckBox chocolateCheckBox = findViewById(R.id.chocolate_checkbox);
         boolean hasChocolate = chocolateCheckBox.isChecked();
 
-        double totalPrice = calculatePrice();
+        double totalPrice = calculatePrice(hasChocolate, hasWhippedCream);
         Log.i(TAG, "The price is " + totalPrice);
         String priceMessage = createOrderSummary(totalPrice, hasWhippedCream, hasChocolate, name);
         displayMessage(priceMessage);
@@ -105,8 +105,18 @@ public class MainActivity extends AppCompatActivity {
      *
      * @return the price
      */
-    private double calculatePrice() {
-        return quantity * coffeePrice;
+    private double calculatePrice(boolean hasChocolate, boolean hasWhippedCream) {
+        double total = coffeePrice;
+
+        if (hasWhippedCream) {
+            total+= 0.20;
+        }
+
+        if (hasChocolate) {
+            total+= 0.30;
+        }
+
+        return quantity * total;
     }
 
 
