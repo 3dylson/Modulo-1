@@ -24,7 +24,7 @@
             android:textAllCaps="true"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toppings_checkbox" />
+            app:layout_constraintTop_toBottomOf="@+id/chocolate_checkbox" />
 
         <TextView
             android:id="@+id/order_summary_text_view"
@@ -128,6 +128,19 @@
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_toppings" />
+
+        <CheckBox
+            android:id="@+id/chocolate_checkbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:paddingLeft="24dp"
+            android:text="@string/title_chocolate"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toppings_checkbox" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

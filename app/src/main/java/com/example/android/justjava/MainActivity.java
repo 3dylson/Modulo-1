@@ -32,9 +32,13 @@ public class MainActivity extends AppCompatActivity {
     public void submitOrder(View view) {
         CheckBox whippedCreamCheckBox = findViewById(R.id.toppings_checkbox);
         boolean hasWhippedCream = whippedCreamCheckBox.isChecked();
+
+        CheckBox chocolateCheckBox = findViewById(R.id.chocolate_checkbox);
+        boolean hasChocolate = chocolateCheckBox.isChecked();
+
         double totalPrice = calculatePrice();
         Log.i(TAG, "The price is " + totalPrice);
-        String priceMessage = createOrderSummary(totalPrice, hasWhippedCream);
+        String priceMessage = createOrderSummary(totalPrice, hasWhippedCream, hasChocolate);
         displayMessage(priceMessage);
     }
 
@@ -92,9 +96,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    private String createOrderSummary(double totalPrice, boolean hasWhippedCream) {
+    private String createOrderSummary(double totalPrice, boolean hasChocolate, boolean hasWhippedCream) {
         String priceMessage = "Name: Kaptain Kunal";
         priceMessage += "\n" + getString(R.string.order_summary_whipped_cream, hasWhippedCream);
+        priceMessage += "\n" + getString(R.string.order_summary_chocolate, hasChocolate);
         priceMessage += "\n" + getString(R.string.order_summary_quantity, quantity);
         priceMessage += "\n" + getString(R.string.order_summary_price, NumberFormat.getCurrencyInstance().format(totalPrice));
         priceMessage += "\n" + getString(R.string.msg_thank_you);
