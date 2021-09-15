@@ -1,4 +1,4 @@
-package com.example.android.justjava;
+package com.example.android.cookies;
 
 import org.junit.Test;
 

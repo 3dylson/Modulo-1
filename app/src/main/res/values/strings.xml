@@ -1,12 +1,7 @@
 <resources>
-    <string name="app_name">Just Java</string>
-    <string name="title_quantity">Quantity</string>
-    <string name="_0">0</string>
-    <string name="_2">2</string>
-    <string name="action_order">Order</string>
-    <string name="title_price">Price</string>
-    <string name="plus_sign">+</string>
-    <string name="minus_sign">-</string>
-    <string name="one_dollar_sign">$1.00</string>
-    <string name="title_order_summary">Order Summary</string>
+    <string name="app_name">Cookies</string>
+    <string name="msg_i_m_so_hungry">I\'m so hungry</string>
+    <string name="msg_i_m_so_full">I\'m so full</string>
+    <string name="msg_eat_cookie">Eat cookie</string>
+
 </resources>
